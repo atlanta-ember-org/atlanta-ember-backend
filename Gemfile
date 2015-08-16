@@ -21,6 +21,8 @@ gem 'faraday'
 
 gem 'pry'
 
+gem 'lazy_doc'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
