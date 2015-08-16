@@ -23,6 +23,8 @@ gem 'pry'
 
 gem 'lazy_doc'
 
+gem 'sidekiq'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
