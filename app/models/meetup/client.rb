@@ -1,13 +1,21 @@
 module Meetup
   class Client
 
-    def self.get_members
-      new.get_members
+    def initialize
+      @page_num = 0
+      @collection = []
     end
 
-    def get_members
-      response = connection.get(members_path, members_params)
-      response.body
+    def collect_all(path, params)
+      response = connection.get(path, required_parameters.merge(params))
+      new_items = JSON.parse(response.body)['results']
+      @collection += new_items
+      if new_items.length == 200
+        @page_num += 1
+        collect_all(path, params)
+      else
+        return @collection
+      end
     end
 
     private
@@ -24,20 +32,13 @@ module Meetup
       'api.meetup.com'
     end
 
-    def members_path
-      '/2/members'
-    end
-
-    def members_params
-      required_parameters.merge({ group_id: ENV['MEETUP_GROUP_ID'] })
-    end
-
     def required_parameters
-      {
+      params = {
         key: ENV['MEETUP_API_KEY'],
-        sign: true
+        sign: true,
       }
+      params[:offset] = @page_num if @page_num
+      params
     end
-
   end
 end
