@@ -23,6 +23,7 @@ gem 'pry'
 gem 'lazy_doc'
 gem 'sidekiq'
 gem 'foreman'
+gem 'active_model_serializers'
 
 group :test, :development do
   gem 'rspec-rails'
