@@ -17,6 +17,13 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/vcr'
+    # c.hook_into :webmock
+    c.ignore_localhost = true
+    c.configure_rspec_metadata!
+  end
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -58,4 +65,12 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/v/3-0/docs
   config.infer_spec_type_from_file_location!
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/vcr'
+    c.hook_into :webmock # or :fakeweb
+    c.ignore_localhost = true
+    c.configure_rspec_metadata!
+  end
 end

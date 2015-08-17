@@ -16,7 +16,19 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# For a little HTTP help
+gem 'faraday'
+
+gem 'pry'
+gem 'lazy_doc'
+gem 'sidekiq'
+gem 'foreman'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'vcr'
+  gem 'database_cleaner'
+  gem 'webmock'
+  gem 'dotenv-rails'
 end
