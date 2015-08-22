@@ -17,12 +17,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  VCR.configure do |c|
-    c.cassette_library_dir = 'spec/vcr'
-    # c.hook_into :webmock
-    c.ignore_localhost = true
-    c.configure_rspec_metadata!
-  end
 
   # ## Mock Framework
   #
