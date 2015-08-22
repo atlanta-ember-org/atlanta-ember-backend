@@ -8,6 +8,9 @@ gem 'rails', '4.1.9'
 # use postgres database
 gem 'pg'
 
+# really!  Order dependancy in the gemfile!?!?
+gem 'dotenv-rails', group: [:test, :development]
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -31,7 +34,6 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'vcr'
   gem 'database_cleaner'
-  gem 'dotenv-rails'
 end
 
 group :test do
