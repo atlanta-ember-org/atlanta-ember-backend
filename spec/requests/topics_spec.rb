@@ -33,4 +33,29 @@ describe "Topics" do
       end
     end
   end
+
+  describe "GET /topics" do
+    let!(:topic_1) { FactoryGirl.create(:topic) }
+    let!(:topic_2) { FactoryGirl.create(:topic) }
+    let!(:topic_3) { FactoryGirl.create(:topic) }
+    let(:topics) { JSON.parse(response.body) }
+
+    before do
+      get topics_path
+    end
+
+    it "is successful" do
+      expect(response.status).to eql(200)
+    end
+
+    it "returns all the topics in a topics hash" do
+      expect(topics).to eq({
+        "topics"=>[
+          { "id"=> topic_1.id, "name"=> topic_1.name, "description"=>"MyString" },
+          { "id"=> topic_2.id, "name"=> topic_2.name, "description"=>"MyString" },
+          { "id"=> topic_3.id, "name"=> topic_3.name, "description"=>"MyString" }
+        ]
+      })
+    end
+  end
 end

@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :topic do
-    name "MyString"
+    sequence :name do |n|
+      "Great Name #{n}"
+    end
     description "MyString"
   end
 end

@@ -10,6 +10,11 @@ class TopicsController < ApplicationController
     head status
   end
 
+  def index
+    @topics = Topic.all
+    render json: @topics, each_serializer: TopicSerializer
+  end
+
   private
 
   def topic_params
