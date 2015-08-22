@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
+ruby "2.2.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
 
 # use postgres database
 gem 'pg'
+
+# really!  Order dependancy in the gemfile!?!?
+gem 'dotenv-rails', group: [:test, :development]
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
@@ -30,6 +34,8 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'vcr'
   gem 'database_cleaner'
+end
+
+group :test do
   gem 'webmock'
-  gem 'dotenv-rails'
 end

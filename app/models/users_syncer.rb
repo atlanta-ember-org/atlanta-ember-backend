@@ -11,13 +11,12 @@ class UsersSyncer
       user.first_name = name_arr.first
       user.last_name = name_arr.last if name_arr.length > 1
       user.save
-      puts user
     end
   end
 
   private
 
   def users_data
-    @users_data ||= Meetup::Client.get_members
+    @users_data ||= Meetup.all_members
   end
 end

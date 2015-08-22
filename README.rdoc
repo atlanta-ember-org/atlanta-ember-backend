@@ -1,28 +1,66 @@
-== README
+# Atlanta Ember Backend API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usage
+  - TODO :)
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+Make sure you're running the right Ruby version (2.2.3 || see Gemfile)
 
-* System dependencies
+Setup your environment with a .env file by moving `/.env.example` to `/.env` and fill in the values.
 
-* Configuration
+  - Gonna need Meetup creds, but haven't found a great way to provide private keys :(
 
-* Database creation
+Install your gems
+```
+bundle install
+```
 
-* Database initialization
+Set up Redis
 
-* How to run the test suite
+  - Install redis.
+    * If you have homebrew it's as simple as `brew install redis`.
+  - Starting the redis server is done with foreman a little later on.
 
-* Services (job queues, cache servers, search engines, etc.)
+Set up database (we're using postgres)
 
-* Deployment instructions
+  - Make sure you have a postgres instance running on 5432.
+  - We don't have a username or password set for the db (see `/database.yml`), so that should not be a problem.
+  - Going to have to set up your db.
+    1. `rake db:create`
+    1. `rake db:schema:load`
 
-* ...
+Start the servers
+
+  - We have a procfile specific to the development environment.
+  - `foreman start -f Procfile.development`
+  - Just leave those processes running :)
+
+Seed the database
+```
+rake db:seed
+```
+
+## Testing
+Easy as pie!
+
+First might need to setup the test db.
+```
+rake db:test:prepare
+```
+
+Then just run the tests.
+
+```
+rspec
+```
+
+## Side Processes
+We use Sidekiq to run a worker for the syncing.  Right now it's running every 10 minutes.  Heroku doesn't like that.  It would rather us let the dinos rest 6 hours a day and this process doesn't ¯\_(ツ)_/¯
+
+### Sync tasks
+  - `rake meetup_sync:users`
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+## Deployment
+Done on Heroku (https://devcenter.heroku.com/articles/getting-started-with-rails4#deploy-your-application-to-heroku)
