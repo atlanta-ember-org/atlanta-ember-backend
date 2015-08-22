@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.2.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
@@ -30,6 +31,9 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'vcr'
   gem 'database_cleaner'
-  gem 'webmock'
   gem 'dotenv-rails'
+end
+
+group :test do
+  gem 'webmock'
 end
