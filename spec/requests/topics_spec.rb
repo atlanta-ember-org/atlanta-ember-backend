@@ -49,13 +49,7 @@ describe "Topics" do
     end
 
     it "returns all the topics in a topics hash" do
-      expect(topics).to eq({
-        "topics"=>[
-          { "id"=> topic_1.id, "name"=> topic_1.name, "description"=>"MyString" },
-          { "id"=> topic_2.id, "name"=> topic_2.name, "description"=>"MyString" },
-          { "id"=> topic_3.id, "name"=> topic_3.name, "description"=>"MyString" }
-        ]
-      })
+      expect(topics["topics"].count).to eql 3
     end
   end
 end
