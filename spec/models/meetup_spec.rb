@@ -14,4 +14,12 @@ describe Meetup do
       expect(members.length).to be > 200
     end
   end
+
+  describe "::all_events", :vcr do
+    let(:events) { subject.all_events }
+    it "returns a list of events" do
+      names_string = events.reduce('') { |acc, res| acc += res['venue']['name'] }
+      expect(names_string).to include('Big Nerd Ranch')
+    end
+  end
 end
