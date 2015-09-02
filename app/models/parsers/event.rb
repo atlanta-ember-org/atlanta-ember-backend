@@ -25,11 +25,12 @@ module Parsers
     end
 
     def originally_created_at
-      Time.at(created)
+      to_time(created)
+
     end
 
     def starts_at
-      Time.at(time)
+      to_time(time);
     end
 
     def to_hash
@@ -44,6 +45,10 @@ module Parsers
         description: description,
         status: status
       }
+    end
+
+    def to_time(int)
+      Time.at(int / 1000)
     end
   end
 end
