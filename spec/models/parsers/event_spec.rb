@@ -24,8 +24,8 @@ describe Parsers::Event do
        })
     end
 
-    it 'has an event_id' do
-      expect(event.event_id).to eql('lchnflytmblb')
+    it 'has an meetup_id' do
+      expect(event.meetup_id).to eql('lchnflytmblb')
     end
 
     it 'has a name' do
@@ -58,7 +58,7 @@ describe Parsers::Event do
 
     describe '#to_hash' do
       it "provides data as a hash" do
-        expect(event.to_hash.keys).to eql([:event_id, :originally_created_at, :starts_at, :venue, :yes_rsvp_count, :name, :event_url, :description, :status])
+        expect(event.to_hash.keys).to eql([:meetup_id, :originally_created_at, :starts_at, :serialized_venue, :yes_rsvp_count, :name, :event_url, :description, :status])
       end
     end
   end

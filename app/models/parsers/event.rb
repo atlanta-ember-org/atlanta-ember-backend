@@ -16,7 +16,11 @@ module Parsers
       lazily_embed(json)
     end
 
-    def event_id
+    def serialized_venue
+      JSON.dump(venue)
+    end
+
+    def meetup_id
       id
     end
 
@@ -30,10 +34,10 @@ module Parsers
 
     def to_hash
       {
-        event_id: event_id,
+        meetup_id: meetup_id,
         originally_created_at: originally_created_at,
         starts_at: starts_at,
-        venue: venue,
+        serialized_venue: serialized_venue,
         yes_rsvp_count: yes_rsvp_count,
         name: name,
         event_url: event_url,

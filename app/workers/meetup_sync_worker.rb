@@ -3,5 +3,6 @@ class MeetupSyncWorker
 
   def perform
     UsersSyncer.sync
+    EventsSyncer.sync
   end
 end
