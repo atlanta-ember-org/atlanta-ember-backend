@@ -2,7 +2,7 @@ module Parsers
   class Event
     include LazyDoc::DSL
 
-    access :venue
+    access :venue, as: Venue
     access :yes_rsvp_count
     access :id
     access :name
@@ -14,10 +14,6 @@ module Parsers
 
     def initialize(json)
       lazily_embed(json)
-    end
-
-    def serialized_venue
-      JSON.dump(venue)
     end
 
     def meetup_id
@@ -38,7 +34,6 @@ module Parsers
         meetup_id: meetup_id,
         originally_created_at: originally_created_at,
         starts_at: starts_at,
-        serialized_venue: serialized_venue,
         yes_rsvp_count: yes_rsvp_count,
         name: name,
         event_url: event_url,
