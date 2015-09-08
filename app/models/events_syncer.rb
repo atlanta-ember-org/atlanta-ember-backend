@@ -6,11 +6,11 @@ class EventsSyncer
 
   def sync
     parsed_events.each do |parsed_event|
-      find_by_params = meetup_id: parsed_event.meetup_id
-      Event.find_or_create_by(find_by_params) do |event|
-        event.update_attributes!(parsed_event.to_hash)
-        event.save
-      end
+      parsed_venue = parsed_event.venue
+      venue = Venue.find_or_create_by(uid: parsed_venue.uid)
+      event = Event.find_or_create_by(meetup_id: parsed_event.meetup_id)
+      venue.update_attributes!(parsed_venue.to_hash)
+      event.update_attributes!(parsed_event.to_hash.merge(venue_id: venue.id))
     end
   end
 
