@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :vote do
-    valence 1
+    valence "up"
 topic_id 1
   end
 
