@@ -5,4 +5,8 @@ class Topic < ActiveRecord::Base
   has_many :assignments
   has_many :users, through: :assignments
   belongs_to :event
+
+  def score
+    votes.where(valence: 1).count - votes.where(valence: 0).count
+  end
 end

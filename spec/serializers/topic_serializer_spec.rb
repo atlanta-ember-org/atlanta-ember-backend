@@ -17,6 +17,7 @@ describe TopicSerializer do
     topic.assignments.create(user: user)
     user
   }
+
   let(:topic_serializer) { described_class.new(topic) }
   subject { JSON.parse(topic_serializer.to_json) }
 
@@ -26,7 +27,8 @@ describe TopicSerializer do
           "id"=> topic.id,
           "name"=>topic.name,
           "description"=>"MyString",
-          "users"=> [user_1.id, user_2.id, user_3.id]
+          "users"=> [user_1.id, user_2.id, user_3.id],
+          "score"=> 0
         }
       }
     }
