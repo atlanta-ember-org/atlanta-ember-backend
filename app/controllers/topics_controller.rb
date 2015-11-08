@@ -15,6 +15,11 @@ class TopicsController < ApplicationController
     render json: @topics, each_serializer: TopicSerializer
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+    render json: @topic
+  end
+
   private
 
   def topic_params
