@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Topic do
-  let(:topic) { FactoryGirl.create(:topic) }
+  subject(:topic) { FactoryGirl.create(:topic) }
+  it { is_expected.to respond_to :topic }
 
   context "without a name value" do
     let(:other_topic) { FactoryGirl.build(:topic, name: nil) }
