@@ -1,7 +1,7 @@
-class CommunityResourceController < ApplicationController
+class CommunityResourcesController < ApplicationController
 	def create
       resource = CommunityResource.new(community_resource_params)
-      if topic.save
+      if resource.save
         status = :ok
       else
         status = :bad_request
@@ -17,6 +17,6 @@ class CommunityResourceController < ApplicationController
     private
 
     def community_resource_params
-      params.require(:community_resource).permit(:title, :url, :description, :group, :created_date)
+      params.require(:community_resource).permit(:title, :url, :description, :group)
     end
 end

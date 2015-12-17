@@ -8,6 +8,10 @@ gem 'rails', '4.1.9'
 # use postgres database
 gem 'pg'
 
+group :development, :test do
+  gem 'sqlite3'
+end
+
 # really!  Order dependancy in the gemfile!?!?
 gem 'dotenv-rails', group: [:test, :development]
 
