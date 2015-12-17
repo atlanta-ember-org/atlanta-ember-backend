@@ -16,4 +16,15 @@ describe "Community resources" do
         	}.by 1
 		end
 	end
+
+	describe "get index" do
+		it "lists all community resources" do
+			CommunityResource.create!(title: 'A cool resource')
+			CommunityResource.create!(title: 'Another cool one')
+			get community_resources_path
+			expect(response.status).to eq 200
+			community_resources = JSON.parse(response.body)
+			expect(community_resources['community_resources'].length).to be 2
+		end
+	end
 end
