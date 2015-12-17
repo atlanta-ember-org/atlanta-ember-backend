@@ -27,4 +27,13 @@ describe "Community resources" do
 			expect(community_resources['community_resources'].length).to be 2
 		end
 	end
+
+	describe "destroy a resource" do
+		it "destroys an existing record" do
+			cr = CommunityResource.create!(title: 'A cool resource')
+			expect{ delete community_resource_path(cr) }.to change{
+				CommunityResource.count
+			}.by -1
+		end
+	end
 end

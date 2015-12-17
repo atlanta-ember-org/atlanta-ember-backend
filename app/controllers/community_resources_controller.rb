@@ -14,6 +14,12 @@ class CommunityResourcesController < ApplicationController
       render json: @resources
     end
 
+	def destroy
+		resource = CommunityResource.find(params['id'])
+		resource.delete
+		head :ok
+	end
+
     private
 
     def community_resource_params
