@@ -11,7 +11,7 @@ class CommunityResourcesController < ApplicationController
 
     def index
       @resources = CommunityResource.all
-      render json: @resources, each_serializer: CommunityResourceSerializer
+      render json: @resources
     end
 
     private
