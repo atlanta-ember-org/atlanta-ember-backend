@@ -1,7 +1,13 @@
 # Atlanta Ember Backend API
 
 ## Usage
-  - TODO :)
+### Basic PR workflow
+  - Work on a feature branch
+  - Make a PR to the develop branch (the default branch)
+    - All feature branches get merged into develop
+  - Occasionally the develop branch gets merged into master
+  - Only develop gets merged into master
+  - Only master branch gets deployed.
 
 ## Getting started
 
