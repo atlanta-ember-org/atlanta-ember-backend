@@ -1,10 +1,10 @@
 development:
-  adapter: sqlite3
+  adapter: postgresql
   database: atlanta_ember_backend_development
   pool: 5
   timeout: 5000
 test:
-  adapter: sqlite3
+  adapter: postgresql
   database: atlanta_ember_backend_test
   pool: 5
   timeout: 5000
