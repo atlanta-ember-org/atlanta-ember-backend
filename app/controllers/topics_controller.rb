@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
 
   def create
-    topic = Topic.new(topic_params)
-    if topic.save
+    event = Event.find(topic_params[:event])
+    if event.topics.create(topic_params.except(:event))
       status = :ok
     else
       status = :bad_request
@@ -15,9 +15,14 @@ class TopicsController < ApplicationController
     render json: @topics, each_serializer: TopicSerializer
   end
 
+  def show
+    @topic = Topic.find(params[:id])
+    render json: @topic
+  end
+
   private
 
   def topic_params
-    params.require(:topic).permit(:name, :description)
+    params.require(:topic).permit(:name, :description, :event)
   end
 end

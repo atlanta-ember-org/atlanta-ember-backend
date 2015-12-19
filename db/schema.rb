@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20151217195324) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
   end
 
   create_table "users", force: true do |t|
@@ -77,6 +78,13 @@ ActiveRecord::Schema.define(version: 20151217195324) do
     t.float    "lat"
     t.boolean  "repinned"
     t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", force: true do |t|
+    t.integer  "valence"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

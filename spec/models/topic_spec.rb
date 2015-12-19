@@ -1,7 +1,19 @@
 require 'spec_helper'
 
 describe Topic do
-  let(:topic) { FactoryGirl.create(:topic) }
+  subject(:topic) { FactoryGirl.create(:topic) }
+  it { is_expected.to respond_to :event }
+  it { is_expected.to respond_to :votes }
+
+  describe '#score' do
+    let!(:vote_1) { topic.votes.create(valence: 1) }
+    let!(:vote_2) { topic.votes.create(valence: 1) }
+    let!(:vote_3) { topic.votes.create(valence: 0) }
+
+    it 'gives the total count of up and down votes' do
+      expect(topic.score).to eq 1
+    end
+  end
 
   context "without a name value" do
     let(:other_topic) { FactoryGirl.build(:topic, name: nil) }
