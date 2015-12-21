@@ -22,4 +22,22 @@ describe Session do
       it { is_expected.to be false }
     end
   end
+
+  describe '#active' do
+    subject { session.active }
+    it { is_expected.to be true }
+
+    context 'when there is a previously active session' do
+      let!(:previous_session) { FactoryGirl.create(:session, user: user) }
+      let!(:current_session)  { FactoryGirl.create(:session, user: user) }
+
+      it 'stays active' do
+        expect(current_session.active).to be true
+      end
+
+      it 'is expected to make all other sessions for the user inactive' do
+        expect(user.sessions.find(previous_session.id).active).to be false
+      end
+    end
+  end
 end
