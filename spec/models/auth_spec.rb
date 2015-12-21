@@ -1,4 +1,5 @@
 require 'spec_helper'
+require_relative '../../app/models/auth'
 
 describe Auth do
   let!(:user)  { FactoryGirl.create(:user) }
