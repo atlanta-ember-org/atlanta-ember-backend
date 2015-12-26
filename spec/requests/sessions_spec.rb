@@ -25,5 +25,16 @@ describe "Sessions" do
         end
       end
     end
+
+    context 'when a user can not be found' do
+      let(:params) { {
+          email: 'bad.email@example.com',
+          password: 'does not matter yet'
+        }
+      }
+      before  { post sessions_path, params }
+      subject { response.status }
+      it { is_expected.to be 404 }
+    end
   end
 end
