@@ -18,7 +18,7 @@ describe JsonapiErrorsResponse do
             }
           }
         ]
-      })}
+      }.to_json)}
     end
 
     context 'with a complex errors hash' do
@@ -42,7 +42,7 @@ describe JsonapiErrorsResponse do
             }
           }
         ]
-      })}
+      }.to_json)}
     end
   end
 end

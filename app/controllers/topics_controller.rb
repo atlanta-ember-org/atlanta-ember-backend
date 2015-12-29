@@ -3,11 +3,10 @@ class TopicsController < ApplicationController
   def create
     topic = Topic.create(topic_params.except(:event))
     if topic.save
-      status = :ok
+      render json: {}
     else
-      status = :bad_request
+      render json: JsonapiErrorsResponse.new(topic).to_json, status: 422
     end
-    render json: {}, status: :ok
   end
 
   def index

@@ -31,7 +31,19 @@ describe "Topics" do
         }
       }
       it "is not successful" do
-        expect(response.status).to eql(400)
+        expect(response.status).to eql(422)
+      end
+
+      it "contains the error message" do
+        expect(response.body).to eql({
+          errors: [
+            { detail: "can't be blank",
+              source: {
+                pointer: "data/attributes/name"
+              }
+            }
+          ]
+        }.to_json)
       end
     end
   end
