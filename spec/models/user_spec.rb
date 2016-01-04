@@ -49,4 +49,8 @@ describe User do
       it { is_expected.to eq new_session.auth_token }
     end
   end
+
+  describe '#password_matches?(password)' do
+    # subject { user.password_matches?(password) }
+  end
 end
