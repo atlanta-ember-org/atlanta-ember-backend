@@ -51,6 +51,17 @@ describe User do
   end
 
   describe '#password_matches?(password)' do
-    # subject { user.password_matches?(password) }
+    let(:password) { "password" }
+    let(:user) { FactoryGirl.create('user', password: password, password_confirmation: password) }
+
+    context 'when the password does match' do
+      subject { user.password_matches?(password) }
+      it { is_expected.to be true }
+    end
+
+    context 'when the password does match' do
+      subject { user.password_matches?("not password") }
+      it { is_expected.to be false }
+    end
   end
 end
