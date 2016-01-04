@@ -2,14 +2,15 @@ require "spec_helper"
 
 describe "Sessions" do
   describe "POST /sessions" do
-    let(:user)   { FactoryGirl.create(:user, email: 'user@example.com') }
-    let(:params) { {
-        email: user.email,
-        password: 'does not matter yet'
-      }
-    }
+    let(:password) { 'password' }
+    let(:user)   { FactoryGirl.create(:user, email: 'user@example.com', password: password) }
 
     context "with all required params" do
+      let(:params) { {
+          email: user.email,
+          password: password
+        }
+      }
 
       it "creates a new session" do
         expect{ post sessions_path, params }.to change{
@@ -26,10 +27,30 @@ describe "Sessions" do
       end
     end
 
+    context 'without a password' do
+      let(:params) { {
+          email: user.email,
+          password: nil
+        }
+      }
+
+      it "creates a new session" do
+        expect{ post sessions_path, params }.not_to change{
+          Session.count
+        }
+      end
+
+      context 'returns' do
+        before  { post sessions_path, params }
+        subject { response.status }
+        it { is_expected.to be 404 }
+      end
+    end
+
     context 'when a user can not be found' do
       let(:params) { {
           email: 'bad.email@example.com',
-          password: 'does not matter yet'
+          password: password
         }
       }
       before  { post sessions_path, params }

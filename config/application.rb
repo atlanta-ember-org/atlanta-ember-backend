@@ -21,7 +21,7 @@ module AtlantaEmberBackend
     # config.i18n.default_locale = :de
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins '*'
+        origins 'http://localhost:4200'
         resource '*', headers: :any, methods: [:get, :post, :put, :options]
       end
     end
