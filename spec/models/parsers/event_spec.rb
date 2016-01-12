@@ -10,18 +10,8 @@ describe Parsers::Event do
   context 'a single event' do
     let(:event) { events.first }
 
-    it 'has a venue' do
-      expect(event.venue).to eql({
-        "address_1" => "200 Arizona Ave NE #200",
-        "city" => "Atlanta",
-        "country" => "us",
-        "id" => 23165582,
-        "lat" => 33.75914,
-        "lon" => -84.3321,
-        "name" => "Big Nerd Ranch",
-        "repinned" => false,
-        "state" => "GA"
-       })
+    it 'has a venue address' do
+      expect(event.venue.address_1).to eq "200 Arizona Ave NE #200"
     end
 
     it 'has an meetup_id' do
@@ -49,16 +39,16 @@ describe Parsers::Event do
     end
 
     it 'has an originally_created_at' do
-      expect(event.originally_created_at).to eql(Time.at(1423751209000))
+      expect(event.originally_created_at).to be
     end
 
     it 'has a starts_at' do
-      expect(event.starts_at).to eql(Time.at(1441753200000))
+      expect(event.starts_at).to be
     end
 
     describe '#to_hash' do
       it "provides data as a hash" do
-        expect(event.to_hash.keys).to eql([:meetup_id, :originally_created_at, :starts_at, :serialized_venue, :yes_rsvp_count, :name, :event_url, :description, :status])
+        expect(event.to_hash.keys).to eql([:meetup_id, :originally_created_at, :starts_at, :yes_rsvp_count, :name, :event_url, :description, :status])
       end
     end
   end
