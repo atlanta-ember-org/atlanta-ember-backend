@@ -1,8 +1,9 @@
 class TopicsController < ApplicationController
 
   def create
-    event = Event.find(topic_params[:event])
-    if event.topics.create(topic_params.except(:event))
+    topic = Topic.new(topic_params)
+
+    if topic.save
       status = :ok
     else
       status = :bad_request
@@ -23,6 +24,6 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:name, :description, :event)
+    params.require(:topic).permit(:name, :description, :event_id)
   end
 end

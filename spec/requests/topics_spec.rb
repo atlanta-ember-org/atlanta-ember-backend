@@ -6,7 +6,8 @@ describe "Topics" do
     let(:params) { {
         topic: {
           name: 'great_name',
-          description: 'really great description!'
+          description: 'really great description!',
+          event_id: FactoryGirl.create(:event).id
         }
       }
     }
