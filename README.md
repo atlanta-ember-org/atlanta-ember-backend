@@ -1,5 +1,7 @@
 # Atlanta Ember Backend API
 
+[![Circle CI](https://circleci.com/gh/atlanta-ember-org/atlanta-ember-backend.svg?style=svg)](https://circleci.com/gh/atlanta-ember-org/atlanta-ember-backend)
+
 ## Usage
 ### Basic PR workflow
   - Work on a feature branch
