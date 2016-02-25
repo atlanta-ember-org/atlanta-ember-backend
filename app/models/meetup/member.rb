@@ -20,7 +20,7 @@ module Meetup
     end
 
     def members_params
-      { group_id: ENV['MEETUP_GROUP_ID'] }
+      { group_id: MEETUP_GROUP_ID }
     end
   end
 end

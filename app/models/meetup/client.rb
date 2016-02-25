@@ -34,7 +34,7 @@ module Meetup
 
     def required_parameters
       params = {
-        key: ENV['MEETUP_API_KEY'],
+        key: MEETUP_API_KEY,
         sign: true,
       }
       params[:offset] = @page_num if @page_num
