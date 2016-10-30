@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.meetup.com/2/events?group_id=4372752&key=516d1f684874591c40806771321c495b&offset=0&sign=true
+    uri: http://api.meetup.com/2/events?group_id=4372752&key=58de362a1182d2f40324c4b7b&offset=0&sign=true
     body:
       encoding: US-ASCII
       string: ''
@@ -443,6 +443,6 @@ http_interactions:
         aWdfaWQ9NTExOTQ3MjImc2lnPWY1YWVlYmY1MTIwOWM2ZTM3M2RmODg0OGRh
         OThkN2U2ZmMyNGNhMGUiLCJpZCI6IiIsInVwZGF0ZWQiOjE0Mzk4MTYzMjkw
         MDAsImxhdCI6IiJ9fQo=
-    http_version: 
+    http_version:
   recorded_at: Tue, 01 Sep 2015 22:21:49 GMT
 recorded_with: VCR 2.9.3
