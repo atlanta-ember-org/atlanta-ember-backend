@@ -1,4 +1,4 @@
-require "spec_helper"
+  require "spec_helper"
 
 describe "Assignments" do
 
@@ -16,14 +16,14 @@ describe "Assignments" do
     context "with all required params" do
 
       it "adds creates a new assignment" do
-        expect{ post assignments_path, params }.to change{
+        expect{ post assignments_path, :params => params }.to change{
           Assignment.count
         }.by 1
       end
 
       context "after the request if made" do
         before do
-          post assignments_path, params
+          post assignments_path, :params => params
         end
 
         it "is successful" do
